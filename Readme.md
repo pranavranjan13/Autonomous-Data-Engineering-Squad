@@ -1,30 +1,97 @@
-# Autonomous Multi-Agent Data Engineering Squad
+# 🚀 Autonomous Data Engineering Squad
 
 ## Executive Summary
 
-An end-to-end autonomous engineering system designed to architect, validate, and deploy production-grade data pipelines. This project automates the Senior Data Engineer's role in enforcing governance for high-scale (500GB+) data workloads.
+This project demonstrates a virtual **Data Engineering Department** built using **Microsoft AutoGen (AG2)**. It automates the end-to-end lifecycle of production data pipelines—from initial architecture and deterministic quality governance to multi-cloud infrastructure deployment (IaC).
 
-## The Problem
+By implementing a **Self-Healing Feedback Loop**, the system ensures every script meets strict enterprise standards for performance and cost-optimization before it reaches production.
 
-Manual code reviews for large-scale data pipelines are time-intensive and prone to governance skips, such as missing partitioning or inferred schemas, which lead to compute-cost overruns in production.
+---
 
-## The Solution (Agentic Architecture)
+## 🏗️ The Agentic Architecture
 
-I built a tri-agent system using **Microsoft AutoGen (AG2)** and the **Euri AI Gateway** that follows a strict DataOps lifecycle:
+The squad utilizes a multi-layered approach to ensure code reliability and governance:
 
-1. **The Data Architect (Agent):** Generates PySpark logic based on enterprise partitioning rules.
-2. **Deterministic Validator (Logic):** A local Python-based quality gate that enforces strict syntax rules (Partitioning, explicit schemas, to_date derivation).
-3. **The Cloud Architect (Agent):** Translates approved logic into Multi-Cloud IaC (Terraform for AWS Glue and YAML for Azure Databricks).
+1.  **The Data Architect (Agent):** A Senior Engineer persona specialized in generating high-scale PySpark logic.
+2.  **The Local Quality Gate (Deterministic):** A high-speed validation layer that enforces "Senior Standards" (Partitioning, explicit schemas, and date derivation) using Python regex to ensure 100% compliance.
+3.  **The Cloud Architect (Agent):** A DevOps specialist that translates approved code into **Terraform (AWS Glue)** and **YAML (Azure Databricks)**.
+4.  **The Admin (Orchestrator):** Manages the workflow, handles agent hand-offs, and controls the self-correction logic.
 
-## Key Technical Achievements
+---
 
-- **Cost-Aware AI:** Engineered a sliding context window to manage a 200k daily token limit, ensuring project sustainability.
-- **Self-Healing Loop:** Implemented a feedback mechanism where agents rewrite code based on failed validation cycles.
-- **Model Agnostic:** Used a custom Model Client bridge to swap between high-performance models (Qwen/Gemini) seamlessly.
+## 🛠️ Key Technical Features
 
-## Tech Stack
+### 1. The Self-Healing Feedback Loop
 
-- **Frameworks:** Microsoft AutoGen (AG2), Pydantic
-- **Languages:** Python (3.10+), PySpark, Terraform
-- **Cloud:** AWS (Glue), Azure (Databricks)
-- **AI Gateway:** Euron API (Gemini 2.5 Flash, Qwen-2.5-Coder)
+Unlike standard code generators, this system audits its own work. If the Architect fails a quality check (e.g., missing partitioning on a 500GB+ dataset), the system triggers an automatic rewrite cycle. The specific failure logs are fed back to the agent until the code is 100% compliant.
+
+### 2. Multi-Cloud Infrastructure as Code (IaC)
+
+Once the PySpark logic is validated, the system automatically generates:
+
+- **AWS Glue (Terraform):** Optimized with G.2X workers and IAM trust policies.
+- **Azure Databricks (YAML):** Configured for Standard_DS3_v2 clusters and automated CI/CD triggers.
+
+### 3. Resource & Cost Governance
+
+Engineered for production efficiency under resource constraints:
+
+- **Sliding Context Window:** Limits conversation history to prevent "Token Snowballing."
+- **Token Insurance:** Hard limits on session tokens to ensure cost-effective operations within a daily budget.
+
+---
+
+## 🚀 Getting Started
+
+### 1. Prerequisites
+
+- **Python 3.10+**
+- An API Key for a supported LLM Gateway (e.g., Euron/OpenAI)
+
+### 2. Installation
+
+```bash
+git clone [https://github.com/YOUR_USERNAME/Autonomous-Data-Engineering-Squad.git](https://github.com/YOUR_USERNAME/Autonomous-Data-Engineering-Squad.git)
+cd Autonomous-Data-Engineering-Squad
+python -m venv venv
+# Windows: venv\Scripts\activate | Mac/Linux: source venv/bin/activate
+pip install -r requirements.txt
+
+```
+
+### 3. Setup
+
+Create a `.env` file in the root directory:
+
+```text
+EURI_API_KEY=your_actual_key_here
+
+```
+
+### 4. Run the Squad
+
+```bash
+python main.py
+
+```
+
+## 📊 Verification of Outputs
+
+The system generates three primary artifacts in your project root:
+
+| Artifact            | File Name            | Description                                                           |
+| ------------------- | -------------------- | --------------------------------------------------------------------- |
+| **Audit Log**       | `*_full_squad.txt`   | A complete record of the "thinking," review, and correction process.  |
+| **Production Code** | `approved_script.py` | The final, validated, and partition-aware PySpark script.             |
+| **Infra Config**    | `infra_config.txt`   | Terraform and YAML deployment logic generated by the Cloud Architect. |
+
+---
+
+## 🧠 Core Competencies Demonstrated
+
+This project serves as a showcase of my ability to:
+
+- **Orchestrate Multi-Agent Systems** to solve complex engineering bottlenecks.
+- **Enforce Data Governance** (partitioning, schema-on-read, compute sizing) programmatically.
+- **Bridge AI Frameworks** with deterministic logic to eliminate hallucinations in production code.
+- **Manage AI OpEx** by optimizing token usage and context windows.
