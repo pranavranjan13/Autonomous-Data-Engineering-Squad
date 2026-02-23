@@ -22,8 +22,8 @@ euri_key = os.getenv("EURI_API_KEY")
 
 class EuronClient:
     def __init__(self, config, **kwargs):
-        self.api_key = config["api_key"]
-        self.model_name = config["model"]
+        self.api_key = config.get("api_key", "")
+        self.model_name = config.get("model", "")
         self.max_out_tokens = config.get("max_tokens", 1200)
         self.endpoint = "https://api.euron.one/api/v1/euri/chat/completions"
 
@@ -153,7 +153,7 @@ def make_llm_config(max_tokens: int = 1000):
     return {
         "config_list": [
             {
-                "model": "qwen/qwen3-32b",
+                "model": "gemini-2.5-flash",
                 "api_key": euri_key,
                 "model_client_cls": "EuronClient",
                 "max_tokens": max_tokens,
