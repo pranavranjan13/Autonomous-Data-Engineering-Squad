@@ -71,7 +71,7 @@ EURI_API_KEY=your_actual_key_here
 ### 4. Run the Squad
 
 ```bash
-python main.py
+python production.py
 
 ```
 
